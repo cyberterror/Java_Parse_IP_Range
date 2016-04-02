@@ -6,7 +6,7 @@ Accepts:
  1. IPv4 address or octet range addressing
  "192.168.0.1" or "192.168.0-255.1-254" or "192.168.1.1,3,7"
  or even something crazy like this:
- "*-5,8,10-12,250-*.*-5,8,10-12,250-*.*-5,8,10-12,250-*.*-5,8,10-12,250-*"
+ \*-5,8,10-12,250-\*.\*-5,8,10-12,250-\*.\*-5,8,10-12,250-\*.\*-5,8,10-12,250-\*
  
  TO DO LIST
  1. implement errors for wrong number formats and ranges (methods are written but not implemented)
