@@ -16,7 +16,8 @@ public class TestClass
     public static void main(String[] args)
     {
         //check simple octet
-        //ParseOctet o1 = new ParseOctet("3");
+        ParseOctet o1 = new ParseOctet("1");
+        System.out.println(o1.getOctetParsed());
         //ParseOctet o2 = new ParseOctet("*");
         //ParseOctet o3 = new ParseOctet("3-5");
         //ParseOctet o4 = new ParseOctet("*-10");
@@ -27,7 +28,7 @@ public class TestClass
 //        System.out.println(o1.getOctetToParse());
 //        System.out.println(o1.getOctetParsed());
 
-        ParseRange r1 = new ParseRange("1.1.1.0-20");
-        r1.printTargets();
+//        ParseRange r1 = new ParseRange("1.1.1.0-20");
+//        r1.printTargets();
     }
 }

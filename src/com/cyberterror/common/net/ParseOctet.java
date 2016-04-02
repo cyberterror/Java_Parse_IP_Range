@@ -54,14 +54,16 @@ import java.util.TreeSet;
  *              fill TreeSet<Integer> "octetParsed" with number
  */
 
-public class ParseOctet {
+public class ParseOctet
+{
 
     private String octetToParse;
     private TreeSet<Integer> octetParsed = new TreeSet<Integer>();
 
     //accept octet like "0,1,3-7,250-*" or more simple
 
-    public ParseOctet(String parseOctet){
+    public ParseOctet(String parseOctet)
+    {
         this.octetToParse = parseOctet;
         parseThisOctet(this.octetToParse); //do the main method [TEMP]
     }
@@ -73,32 +75,56 @@ public class ParseOctet {
             String[] temp1 = octetToParse.split(",");
             for(String s1 : temp1)
             {
-
                 if(s1.contains("-"))
                 { // "3-5" "3-*" "*-10" "*-*"
                     String[] temp2 = s1.split("-");
                     if (temp2[0].equals("*") && temp2[1].equals("*"))
                     {// "*-*"
-                        for (int i = 0; i < 256; i++){
+                        for (int i = 0; i < 256; i++)
+                        {
                             octetParsed.add(i);
                         }
                     }
                     else if (temp2[0].equals("*"))
                     {// "*-5"
-                        for (int i = 0; i < Integer.parseInt(temp2[1])+1; i++){
-                            octetParsed.add(i);
+                        try
+                        {
+                            for (int i = 0; i < Integer.parseInt(temp2[1])+1; i++)
+                            {
+                                octetParsed.add(i);
+                            }
+                        }
+                        catch (NumberFormatException e)
+                        {
+                            System.out.println("Wrong format of IP address! Segments of IP can consist only in form of integer positive numbers!");
                         }
                     }
                     else if (temp2[1].equals("*"))
                     {// "5-*"
-                        for (int i = Integer.parseInt(temp2[0]); i < 256; i++){
-                            octetParsed.add(i);
+                        try
+                        {
+                            for (int i = Integer.parseInt(temp2[0]); i < 256; i++)
+                            {
+                                octetParsed.add(i);
+                            }
+                        }
+                        catch (NumberFormatException e)
+                        {
+                            System.out.println("Wrong format of IP address! Segments of IP can consist only in form of integer positive numbers!");
                         }
                     }
                     else
                     {// "1-5"
-                        for (int i = Integer.parseInt(temp2[0]); i < Integer.parseInt(temp2[1])+1; i++){
-                            octetParsed.add(i);
+                        try
+                        {
+                            for (int i = Integer.parseInt(temp2[0]); i < Integer.parseInt(temp2[1])+1; i++)
+                            {
+                                octetParsed.add(i);
+                            }
+                        }
+                        catch (NumberFormatException e)
+                        {
+                            System.out.println("Wrong format of IP address! Segments of IP can consist only in form of integer positive numbers!");
                         }
                     }
                 }
@@ -106,13 +132,21 @@ public class ParseOctet {
                 {// "3" "*"
                     if (s1.equals("*"))
                     {// "*"
-                        for (int i = 0; i < 256; i++){
+                        for (int i = 0; i < 256; i++)
+                        {
                             octetParsed.add(i);
                         }
                     }
                     else
                     {// "3"
-                        octetParsed.add(Integer.parseInt(s1));
+                        try
+                        {
+                            octetParsed.add(Integer.parseInt(s1));
+                        }
+                        catch (NumberFormatException e)
+                        {
+                            System.out.println("Wrong format of IP address! Segments of IP can consist only in form of integer positive numbers!");
+                        }
                     }
                 }
             }
@@ -126,41 +160,72 @@ public class ParseOctet {
                 String[] temp1 = octetToParse.split("-");
                 if (temp1[0].equals("*") && temp1[1].equals("*"))
                 {// "*-*"
-                    for (int i = 0; i < 256; i++){
+                    for (int i = 0; i < 256; i++)
+                    {
                         octetParsed.add(i);
                     }
                 }
                 else if (temp1[0].equals("*"))
                 {// "*-5"
-                    for (int i = 0; i < Integer.parseInt(temp1[1])+1; i++){
-                        octetParsed.add(i);
+                    try
+                    {
+                        for (int i = 0; i < Integer.parseInt(temp1[1])+1; i++)
+                        {
+                            octetParsed.add(i);
+                        }
                     }
+                    catch (NumberFormatException e)
+                    {
+                        System.out.println("Wrong format of IP address! Segments of IP can consist only in form of integer positive numbers!");
+                    }
+
                 }
                 else if (temp1[1].equals("*"))
                 {// "5-*"
-                    for (int i = Integer.parseInt(temp1[0]); i < 256; i++){
-                        octetParsed.add(i);
+                    try
+                    {
+                        for (int i = Integer.parseInt(temp1[0]); i < 256; i++)
+                        {
+                            octetParsed.add(i);
+                        }
+                    }
+                    catch (NumberFormatException e){
+                        System.out.println("Wrong format of IP address! Segments of IP can consist only in form of integer positive numbers!");
                     }
                 }
                 else
                 {// "1-5"
-                    for (int i = Integer.parseInt(temp1[0]); i < Integer.parseInt(temp1[1])+1; i++){
-                        octetParsed.add(i);
+                    try
+                    {
+                        for (int i = Integer.parseInt(temp1[0]); i < Integer.parseInt(temp1[1])+1; i++)
+                        {
+                            octetParsed.add(i);
+                        }
+                    }
+                    catch (NumberFormatException e)
+                    {
+                        System.out.println("Wrong format of IP address! Segments of IP can consist only in form of integer positive numbers!");
                     }
                 }
-
             }
             else
             {// "3" "*"
                 if (octetToParse.equals("*"))
                 {// "*"
-                    for (int i = 0; i < 256; i++){
+                    for (int i = 0; i < 256; i++)
+                    {
                         octetParsed.add(i);
                     }
                 }
                 else
                 {// "3"
-                    octetParsed.add(Integer.parseInt(octetToParse));
+                    try {
+                        octetParsed.add(Integer.parseInt(octetToParse));
+                    }
+                    catch (NumberFormatException e)
+                    {
+                        System.out.println("Wrong format of IP address! Segments of IP can consist only in form of integer positive numbers!");
+                    }
                 }
             }
         }
