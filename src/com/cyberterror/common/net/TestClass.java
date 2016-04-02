@@ -16,7 +16,7 @@ public class TestClass
     public static void main(String[] args)
     {
         //check simple octet
-        ParseOctet o1 = new ParseOctet("1");
+        ParseOctet o1 = new ParseOctet("*-1,8,10-12,250-*");
         System.out.println(o1.getOctetParsed());
         //ParseOctet o2 = new ParseOctet("*");
         //ParseOctet o3 = new ParseOctet("3-5");

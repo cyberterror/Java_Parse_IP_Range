@@ -9,7 +9,7 @@ Accepts:
  \*-5,8,10-12,250-\*.\*-5,8,10-12,250-\*.\*-5,8,10-12,250-\*.\*-5,8,10-12,250-\*
  
  TO DO LIST
- 1. implement errors for wrong number formats and ranges (methods are written but not implemented)
+ 1. implement errors for wrong ranges (numbers less more then 255)
  2. implement CIDR notation
  3. implement crazy ranges with " - " like "very complex range 1" - "very complex range 2"
  
